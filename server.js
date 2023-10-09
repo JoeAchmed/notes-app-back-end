@@ -2,7 +2,7 @@
 const Hapi = require('@hapi/hapi');
 const router = require('./routes');
 
-const host = 'localhost';
+const host = process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0';
 const port = 5000;
 
 const Init = async () => {
