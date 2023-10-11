@@ -6,7 +6,16 @@ const host = process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0';
 const port = 5000;
 
 const Init = async () => {
-  const server = Hapi.server({ port, host });
+  const server = Hapi.server({
+    port,
+    host,
+    routes: {
+      cors: {
+        origin: ['*'],
+      },
+    },
+  });
+
   server.route(router);
 
   await server.start();
